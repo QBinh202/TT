@@ -328,19 +328,18 @@
     <!-- Tiêu đề và Hình ảnh -->
     <div class="title">
         <h3 class="STARDUST1">2024</h3>
-        <h1 class="STARDUST2">Thiên Thanh Số Một</h1>
+        <h1 class="STARDUST2">Thiên Thanh Dễ Thương Số Một</h1>
         <h3 class="STARDUST3">Miss <strong>❤</strong> You</h3>
         <!-- Đã loại bỏ hình ảnh tt.png ở đây -->
         <!-- <img class="img" src="tt.png" alt="Thiên Thanh" /> -->
     </div>
 
-    <!-- Audio tự động phát (bị comment trong mã của bạn) -->
-    <!-- Nếu muốn sử dụng audio, bỏ comment và đảm bảo file âm thanh tồn tại -->
-    <!--
-    <audio autoplay loop>
-        <source src="renxi.mp3" type="audio/mp3" />
+    <!-- Audio tự động phát -->
+    <audio id="backgroundAudio" autoplay loop>
+        <source src="anhdalamgidau.mp3" type="audio/mp3" />
+        <!-- Thêm định dạng khác nếu cần -->
+        Your browser does not support the audio element.
     </audio>
-    -->
 
     <!-- Kết nối các script JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -350,13 +349,16 @@
     <script>
         // Tự động phát âm thanh (cho các trình duyệt không hỗ trợ autoplay)
         window.onload = () => {
-            const audio = document.querySelector('audio');
-            if (audio) {
-                audio.play().catch(error => {
-                    // Nếu không thể autoplay, bạn có thể thêm nút để người dùng kích hoạt
-                    console.log('Autoplay was prevented.');
-                });
-            }
+            const audio = document.getElementById('backgroundAudio');
+
+            // Kiểm tra nếu trình duyệt hỗ trợ autoplay
+            audio.play().then(() => {
+                // Autoplay thành công
+                console.log('Audio autoplayed successfully.');
+            }).catch(error => {
+                // Autoplay bị chặn, thông báo lỗi
+                console.log('Autoplay was prevented.');
+            });
 
             // Tạo hiệu ứng mưa trái tim rơi
             const heartRain = document.getElementById('heartRain');
